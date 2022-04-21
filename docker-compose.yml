@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  db_conclaveeng:
+    container_name: "db_django"
+    image: mysql:8.0.27
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - mysql_django_db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: django_db
+      MYSQL_DATABASE: django
+    ports:
+      - "3310:3306"
+
+volumes:
+  mysql_django_db:
