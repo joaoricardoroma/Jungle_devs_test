@@ -18,22 +18,22 @@ from django.urls import path, include
 from rest_framework import routers
 from app.api import viewsets as authorViewSets
 from app.api import viewsets as articlesViewSets
-from app.api import viewsets as categoryViewSets
+from app.api.viewsets import Register
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from django.conf.urls.static import static
 from django.conf import settings
-
 route = routers.DefaultRouter()
 
 route.register(r'authors', authorViewSets.AuthorViewSet, basename="Authors")
 route.register(r'articles', articlesViewSets.ArticleViewSet, basename="Articles")
-route.register(r'category', categoryViewSets.CategoryViewSet, basename="Category")
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('token/', TokenObtainPairView.as_view()),
-    path('token/refresh', TokenRefreshView.as_view()),
+    path('api/login/', TokenObtainPairView.as_view(), name='login'),
+    path('api/login/refresh', TokenRefreshView.as_view()),
+    path('api/sign-up/', Register.as_view(), name='register'),
+
     path('', include(route.urls))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
