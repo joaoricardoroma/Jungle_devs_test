@@ -131,9 +131,6 @@ dmypy.json
 # Media files
 mediafiles
 
-.idea/Jungle_devs_test_001.iml
-.idea/dataSources.local.xml
-.idea/dataSources/
-
+.idea/
 
 media/
