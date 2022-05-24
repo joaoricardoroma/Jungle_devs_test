@@ -16,5 +16,7 @@ Open your terminal and type:
     0.0.0.0:8000/api/articles
 
 # Postman
+
 Import collections
 
+https://github.com/joaoricardoroma/Jungle_devs_teste1/tree/main/postman
