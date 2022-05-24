@@ -4,7 +4,7 @@ Install Makefile creator on your code reader.
 
 Open your terminal and type:
 
-    Make all
+    Make run
 
 Add those apps to your `INSTALLED_APPS` setting.
 ```python
