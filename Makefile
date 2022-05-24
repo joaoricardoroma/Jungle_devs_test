@@ -1,18 +1,21 @@
-all:
-	pip install -r requirements.txt
-	pip install --upgrade pip
-	docker pull postgres:latest
-	docker-compose up --build -d
-	python3 manage.py migrate
-	python3 manage.py runserver
+up:
+	docker-compose up
 
-test:
-	python3 manage.py test
+down:
+	docker-compose down
 
 build:
-	python3 manage.py makemigrations
-	python3 manage.py migrate
+	docker exec jungle pip install -r requirements.txt
+	docker exec jungle python3 manage.py migrate
+
+test:
+	docker exec jungle python3 manage.py test
 
 logs:
 	docker-compose logs -f --tail 100
 
+run:
+	docker exec -it run $(command)
+
+attach:
+	docker attach jungle

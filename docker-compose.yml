@@ -6,7 +6,7 @@ services:
     container_name: jungle
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/usr/src/app
+      - ./:/usr/src/app
     ports:
       - "8000:8000"
     depends_on:
@@ -14,7 +14,6 @@ services:
 
   postgresql:
     container_name: postgresql
-    hostname: postgresql
     image: postgres
     environment:
       POSTGRES_PASSWORD: "jungle123"
