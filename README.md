@@ -18,6 +18,7 @@ make up
 
 ## To apply your database:
 
+- Rename file app/.env_sample to .env, file already have db connection information
 ```
 make build
 ```
