@@ -23,7 +23,7 @@ make build
 ```
 
 
-## To realize all tests run:
+## To test code run:
 
 ```
 make test
@@ -62,7 +62,7 @@ make test
     0.0.0.0:8000/api/articles (list all articles) **can read without token, but not with full access
     
     
-# Refference
+# Source
 
 [Jungle Devs - Django Challenge #001] (https://github.com/JungleDevs/django-challenge-001)
 
