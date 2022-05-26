@@ -15,13 +15,15 @@ class ArticlesSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Articles
-        fields = ["author", "category", "title", "summary", "first_paragraph", "body"]
+        fields = ["id", "author_id", "author", "category", "title", "summary", "first_paragraph", "body"]
 
 
 class LoggedOutArticleSerializer(serializers.ModelSerializer):
+    author = AuthorSerializer(many=False, read_only=True)
+    author_id = serializers.UUIDField(write_only=True)
     class Meta:
         model = models.Articles
-        fields = ["author", "category", "title", "summary", "first_paragraph", "body"]
+        fields = ["id", "author_id", "author", "category", "title", "summary", "first_paragraph"]
 
 
 class RegisterSerializer(serializers.ModelSerializer):

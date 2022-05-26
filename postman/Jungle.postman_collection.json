@@ -22,6 +22,9 @@
 							}
 						}
 					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -42,61 +45,19 @@
 								"disabled": true
 							}
 						],
-						"url": {
-							"raw": "{{URL}}/authors/",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"authors",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Author detail",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"tests[\"Has Token\"] = jsonData.access.length > 0 ;",
-									"postman.setEnvironmentVariable(\"token\", jsonData.access);"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "",
-									"type": "string"
-								}
-							]
+						"body": {
+							"mode": "formdata",
+							"formdata": []
 						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{token}}",
-								"type": "text"
-							}
-						],
 						"url": {
-							"raw": "{{URL}}/authors/{{AUTHOR_ID}}",
+							"raw": "{{URL}}/api/admin/authors",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
-								"authors",
-								"{{AUTHOR_ID}}"
+								"api",
+								"admin",
+								"authors"
 							]
 						}
 					},
@@ -123,7 +84,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -141,7 +102,7 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "",
+									"value": "acacascascascas",
 									"type": "text"
 								},
 								{
@@ -152,20 +113,15 @@
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/authors/",
+							"raw": "{{URL}}/api/admin/authors/",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
+								"api",
+								"admin",
 								"authors",
 								""
-							],
-							"query": [
-								{
-									"key": "",
-									"value": "",
-									"disabled": true
-								}
 							]
 						}
 					},
@@ -210,24 +166,26 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "",
+									"value": "balacacadc",
 									"type": "text"
 								},
 								{
 									"key": "picture",
 									"type": "file",
-									"src": []
+									"src": "/home/roma/Downloads/20190328_225934.jpg"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/authors/{{AUTHOR_ID}}/",
+							"raw": "{{URL}}/api/admin/authors/68cd6c4c-f983-4f91-a23c-378ff2611ced/",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
+								"api",
+								"admin",
 								"authors",
-								"{{AUTHOR_ID}}",
+								"68cd6c4c-f983-4f91-a23c-378ff2611ced",
 								""
 							]
 						}
@@ -274,28 +232,31 @@
 								{
 									"key": "choose any field",
 									"value": "",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "name",
-									"value": "",
+									"value": "acacacacacacac",
 									"type": "text"
 								},
 								{
 									"key": "picture",
 									"type": "file",
-									"src": []
+									"src": "/home/roma/Downloads/gif-heart-23.gif"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/authors/{{AUTHOR_ID}}/",
+							"raw": "{{URL}}/api/admin/authors/68cd6c4c-f983-4f91-a23c-378ff2611ced/",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
+								"api",
+								"admin",
 								"authors",
-								"{{AUTHOR_ID}}",
+								"68cd6c4c-f983-4f91-a23c-378ff2611ced",
 								""
 							]
 						}
@@ -359,13 +320,15 @@
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/authors/{{AUTHOR_ID}}/",
+							"raw": "{{URL}}/api/admin/authors/68cd6c4c-f983-4f91-a23c-378ff2611ced/",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
+								"api",
+								"admin",
 								"authors",
-								"{{AUTHOR_ID}}",
+								"68cd6c4c-f983-4f91-a23c-378ff2611ced",
 								""
 							]
 						}
@@ -392,6 +355,9 @@
 							}
 						}
 					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -408,15 +374,21 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
 						"url": {
-							"raw": "{{URL}}/articles/",
+							"raw": "{{URL}}/api/articles/",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
+								"api",
 								"articles",
 								""
 							]
@@ -425,7 +397,7 @@
 					"response": []
 				},
 				{
-					"name": "Article detail",
+					"name": "Article admin",
 					"event": [
 						{
 							"listen": "test",
@@ -439,13 +411,16 @@
 							}
 						}
 					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -455,17 +430,24 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{token}}",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
 						"url": {
-							"raw": "{{URL}}/articles/{{ARTICLE_ID}}",
+							"raw": "{{URL}}/api/admin/articles/",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
+								"api",
+								"admin",
 								"articles",
-								"{{ARTICLE_ID}}"
+								""
 							]
 						}
 					},
@@ -503,7 +485,7 @@
 							"formdata": [
 								{
 									"key": "author_id",
-									"value": "33b2b6b4-f846-4bb9-94dd-65461d35eff6",
+									"value": "aea15452-e65e-4f00-b7ad-e51cd379aaa7",
 									"type": "text"
 								},
 								{
@@ -534,11 +516,12 @@
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/articles/",
+							"raw": "{{URL}}/api/articles/",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
+								"api",
 								"articles",
 								""
 							]
@@ -585,44 +568,46 @@
 							"formdata": [
 								{
 									"key": "author_id",
-									"value": "",
+									"value": "aea15452-e65e-4f00-b7ad-e51cd379aaa7",
 									"type": "text"
 								},
 								{
 									"key": "category",
-									"value": "",
+									"value": "aaaaaaaaaaaaaaa",
 									"type": "text"
 								},
 								{
 									"key": "title",
-									"value": "",
+									"value": "aaaaaaaaaaaaaaaaaaaa",
 									"type": "text"
 								},
 								{
 									"key": "summary",
-									"value": "",
+									"value": "aaaaaaaaaaaaaaaaaaaaaa",
 									"type": "text"
 								},
 								{
 									"key": "first_paragraph",
-									"value": "",
+									"value": "aaaaaaaaaaaaaaaaaa",
 									"type": "text"
 								},
 								{
 									"key": "body",
-									"value": "",
+									"value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/articles/{{ARTICLE_ID}}/",
+							"raw": "{{URL}}/api/admin/articles/6ab0d0f2-f295-4ce0-af14-e295f8fd1a8d/",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
+								"api",
+								"admin",
 								"articles",
-								"{{ARTICLE_ID}}",
+								"6ab0d0f2-f295-4ce0-af14-e295f8fd1a8d",
 								""
 							]
 						}
@@ -664,13 +649,15 @@
 							}
 						],
 						"url": {
-							"raw": "{{URL}}/articles/{{ARTICLE_ID}}/",
+							"raw": "{{URL}}/api/admin/articles/6ab0d0f2-f295-4ce0-af14-e295f8fd1a8d/",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
+								"api",
+								"admin",
 								"articles",
-								"{{ARTICLE_ID}}",
+								"6ab0d0f2-f295-4ce0-af14-e295f8fd1a8d",
 								""
 							]
 						}
@@ -758,13 +745,15 @@
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/articles/{{ARTICLE_ID}}/",
+							"raw": "{{URL}}/api/admin/articles/6ab0d0f2-f295-4ce0-af14-e295f8fd1a8d/",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
+								"api",
+								"admin",
 								"articles",
-								"{{ARTICLE_ID}}",
+								"6ab0d0f2-f295-4ce0-af14-e295f8fd1a8d",
 								""
 							]
 						}
@@ -799,23 +788,24 @@
 							"formdata": [
 								{
 									"key": "username",
-									"value": "admin",
+									"value": "cascascasc",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "admin",
+									"value": "123",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/token/",
+							"raw": "{{URL}}/api/login/",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
-								"token",
+								"api",
+								"login",
 								""
 							]
 						}
@@ -832,38 +822,39 @@
 							"formdata": [
 								{
 									"key": "first_name",
-									"value": "",
+									"value": "123",
 									"type": "text"
 								},
 								{
 									"key": "last_name",
-									"value": "",
+									"value": "cacacasc",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "",
+									"value": "123@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "username",
-									"value": "",
+									"value": "cascascasc",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "",
+									"value": "123",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/register/",
+							"raw": "{{URL}}/api/sign-up/",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
-								"register",
+								"api",
+								"sign-up",
 								""
 							],
 							"query": [

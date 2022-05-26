@@ -33,6 +33,7 @@ class TestViews(TestSetUp):
         self.assertEqual(res.status_code, 200)
 
     def test_body_validation_error(self):
+        import ipdb; ipdb.set_trace()
         data = {
             "author_id": Author.objects.first().id,
             "category": "Motivacional",

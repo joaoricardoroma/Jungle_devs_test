@@ -15,7 +15,12 @@ logs:
 	docker-compose logs -f --tail 100
 
 run:
-	docker exec -it run $(command)
+	docker exec -it jungle $(command)
 
 attach:
 	docker attach jungle
+
+coverage:
+	coverage run manage.py test
+	coverage report
+	coverage html

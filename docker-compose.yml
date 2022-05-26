@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   jungle:
-    build: .
+    image: jungle_devs_test_001_jungle
     container_name: jungle
     command: python manage.py runserver 0.0.0.0:8000
     volumes:

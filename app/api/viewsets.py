@@ -4,7 +4,7 @@ from rest_framework import serializers, viewsets
 from rest_framework.response import Response
 from app.api import serializers
 from app import models
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 import django_filters
 from app.api.serializers import LoggedOutArticleSerializer, ArticlesSerializer, RegisterSerializer
 from app.models import Articles
@@ -19,7 +19,22 @@ class AuthorViewSet(viewsets.ModelViewSet):
 
 
 class ArticleViewSet(viewsets.ModelViewSet):
-    # permission_classes = (IsAuthenticated, )
+    permission_classes =(IsAuthenticated, )
+    serializer_class = serializers.ArticlesSerializer
+    queryset = models.Articles.objects.all()
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['category', 'author__name', 'title', 'body']
+
+    # def get_serializer_class(self):
+    #     if self.request.user.is_authenticated:
+    #         return ArticlesSerializer
+    #     else:
+    #         return LoggedOutArticleSerializer
+
+
+class AnonymousArticleViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+    serializer_class = serializers.LoggedOutArticleSerializer
     queryset = models.Articles.objects.all()
     filter_backends = [filters.SearchFilter]
     search_fields = ['category', 'author__name', 'title', 'body']

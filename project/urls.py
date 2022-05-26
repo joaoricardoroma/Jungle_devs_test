@@ -16,16 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from app.api import viewsets as authorViewSets
-from app.api import viewsets as articlesViewSets
-from app.api.viewsets import Register
+from app.api import viewsets
+from app.api.viewsets import Register, LoggedOutArticleSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from django.conf.urls.static import static
 from django.conf import settings
 route = routers.DefaultRouter()
 
-route.register(r'authors', authorViewSets.AuthorViewSet, basename="Authors")
-route.register(r'articles', articlesViewSets.ArticleViewSet, basename="Articles")
+route.register(r'api/admin/authors', viewsets.AuthorViewSet, basename="Authors")
+route.register(r'api/admin/articles', viewsets.ArticleViewSet, basename='Admin/Articles')
+route.register(r'api/articles', viewsets.AnonymousArticleViewSet, basename='Articles')
 
 
 urlpatterns = [
