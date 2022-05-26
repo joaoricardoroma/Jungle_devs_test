@@ -1,10 +1,22 @@
-# Jungle Devs - Django Challenge #001
+# Installation
 
+Install Makefile creator on your code reader.
 
-## Installation
+Open your terminal and type:
 
-- Open terminal on your code reader and type: pip install -r requirements.txt
-- Install Makefile creator plugin
-- type: make all
+    Make run
 
-### Import collections and environment for Postman
+# Urls
+
+    0.0.0.0:8000
+    0.0.0.0:8000/api/login
+    0.0.0.0:8000/api/sign-up
+    0.0.0.0:8000/api/admin/authors
+    0.0.0.0:8000/api/admin/articles
+    0.0.0.0:8000/api/articles
+
+# Postman
+
+Import collections
+
+https://github.com/joaoricardoroma/Jungle_devs_teste1/tree/main/postman
