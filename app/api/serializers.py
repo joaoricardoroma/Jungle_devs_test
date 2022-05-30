@@ -14,7 +14,7 @@ class ArticlesSerializer(serializers.ModelSerializer):
     author_id = serializers.UUIDField(write_only=True)
 
     class Meta:
-        model = models.Articles
+        model = models.Article
         fields = ["id", "author_id", "author", "category", "title", "summary", "first_paragraph", "body"]
 
 
@@ -22,7 +22,7 @@ class LoggedOutArticleSerializer(serializers.ModelSerializer):
     author = AuthorSerializer(many=False, read_only=True)
     author_id = serializers.UUIDField(write_only=True)
     class Meta:
-        model = models.Articles
+        model = models.Article
         fields = ["id", "author_id", "author", "category", "title", "summary", "first_paragraph"]
 
 

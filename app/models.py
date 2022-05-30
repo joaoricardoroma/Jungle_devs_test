@@ -19,7 +19,7 @@ class Author(models.Model):
         return "%s" % self.name
 
 
-class Articles(models.Model):
+class Article(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     category = models.CharField(max_length=200)
     author = models.ForeignKey("Author", on_delete=models.CASCADE, related_name='article_author')

@@ -30,7 +30,7 @@ make build
 make test
 ```
 
-## Articles
+## Article
 
     
       "id": "UUID",
