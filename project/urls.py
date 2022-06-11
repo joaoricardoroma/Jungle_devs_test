@@ -23,9 +23,9 @@ from django.conf.urls.static import static
 from django.conf import settings
 route = routers.DefaultRouter()
 
-route.register(r'api/admin/authors', viewsets.AuthorViewSet, basename="Authors")
-route.register(r'api/admin/articles', viewsets.ArticleViewSet, basename='Admin/Articles')
-route.register(r'api/articles', viewsets.AnonymousArticleViewSet, basename='Articles')
+route.register(r'admin/authors', viewsets.AuthorViewSet, basename="author")
+route.register(r'admin/articles', viewsets.ArticleViewSet, basename='article')
+route.register(r'articles', viewsets.AnonymousArticleViewSet, basename='Articles')
 
 
 urlpatterns = [
@@ -34,7 +34,7 @@ urlpatterns = [
     path('api/login/refresh', TokenRefreshView.as_view()),
     path('api/sign-up/', Register.as_view(), name='register'),
 
-    path('', include(route.urls))
+    path('api/', include(route.urls))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

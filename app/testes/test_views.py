@@ -32,8 +32,8 @@ class TestViews(TestSetUp):
         res = self.client.post(self.login_url, self.user_data, format="json")
         self.assertEqual(res.status_code, 200)
 
-    def test_body_validation_error(self):
-        import ipdb; ipdb.set_trace()
+    def test_body_validation_without_error(self):
+        import ipdb;ipdb.set_trace()
         data = {
             "author_id": Author.objects.first().id,
             "category": "Motivacional",
@@ -42,10 +42,12 @@ class TestViews(TestSetUp):
             "body": "Se você é do tipo que reluta em entregar as coisas no prazo estabelecido, se distrai facilmente, navega na internet em vez de pagar as contas, ou é do tipo que compra o presente do seu amigo a caminho da festa, este livro vai mudar sua vida.",
 
         }
-        response = self.client.post(self.articles_list, data=data)
-        self.assertEqual(response.status_code, 400)
+        response = self.client.post(self.article_list, data=data)
+        self.assertEqual(response.status_code, 200)
+        self.assertEquals(response.data["body"], data["body"])
+        self.assertEquals(response.data["author"]["id"], str(data["author_id"]))
 
-    def test_body_validation(self):
+    def test_body_validation_with_error(self):
         data = {
             "author_id": Author.objects.first().id,
             "category": "Motivacional",
@@ -55,7 +57,5 @@ class TestViews(TestSetUp):
             "body": " Se você é do tipo que reluta em entregar as coisas no prazo estabelecido, se distrai facilmente",
 
         }
-        response = self.client.post(self.articles_list, data=data)
-        self.assertEqual(response.status_code, 201)
-        self.assertEquals(response.data["body"], data["body"])
-        self.assertEquals(response.data["author"]["id"], str(data["author_id"]))
+        response = self.client.post(self.article_list, data=data)
+        self.assertEqual(response.status_code, 400)

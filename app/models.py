@@ -24,9 +24,9 @@ class Article(models.Model):
     category = models.CharField(max_length=200)
     author = models.ForeignKey("Author", on_delete=models.CASCADE, related_name='article_author')
     title = models.CharField(max_length=200)
-    summary = models.CharField(max_length=500)
+    summary = models.CharField(max_length=10000)
     first_paragraph = models.CharField(max_length=200)
-    body = models.CharField(max_length=10000)
+    body = models.TextField()
 
     def clean(self):
         if self.body is not None:

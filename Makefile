@@ -24,3 +24,14 @@ coverage:
 	coverage run manage.py test
 	coverage report
 	coverage html
+
+inspect:
+	docker exec -it jungle /bin/bash
+
+
+scrap:
+	docker exec jungle python3 manage.py BSoup
+
+
+json:
+	docker exec -it jungle python3 manage.py json
