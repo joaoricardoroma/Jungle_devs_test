@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from app.api import viewsets
-from app.api.viewsets import Register, LoggedOutArticleSerializer
+from app.api.viewsets import Register, LoggedOutArticleSerializer, AuthorDocumentView, ArticleDocumentView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from django.conf.urls.static import static
 from django.conf import settings
@@ -33,6 +33,8 @@ urlpatterns = [
     path('api/login/', TokenObtainPairView.as_view(), name='login'),
     path('api/login/refresh', TokenRefreshView.as_view()),
     path('api/sign-up/', Register.as_view(), name='register'),
+    path('author/search/', AuthorDocumentView.as_view({'get': 'list'}), name='author'),
+    path('articles/search/', ArticleDocumentView.as_view({'get': 'list'}), name='articleview'),
 
     path('api/', include(route.urls))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

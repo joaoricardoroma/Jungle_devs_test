@@ -6,8 +6,11 @@ from app.api import serializers
 from app import models
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 import django_filters
-from app.api.serializers import LoggedOutArticleSerializer, ArticlesSerializer, RegisterSerializer
+from app.api.serializers import LoggedOutArticleSerializer, ArticlesSerializer, RegisterSerializer, AuthorSerializer
+from app.documents import AuthorDocument, ArticleDocument
 from app.models import Article
+from django_elasticsearch_dsl_drf.viewsets import DocumentViewSet
+from django_elasticsearch_dsl_drf.filter_backends import FilteringFilterBackend, CompoundSearchFilterBackend
 
 
 class AuthorViewSet(viewsets.ModelViewSet):
@@ -61,3 +64,45 @@ class Register(generics.GenericAPIView):
             )
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class AuthorDocumentView(DocumentViewSet):
+    document = AuthorDocument
+    serializer_class = AuthorSerializer
+
+    filter_backends = [
+        FilteringFilterBackend,
+        CompoundSearchFilterBackend
+    ]
+
+    search_fields = ('name', 'picture')
+    multi_match_search_fields = ('name', 'picture')
+    filter_fields = {
+        'name': 'name',
+        'picture': 'picture'
+
+    }
+
+
+class ArticleDocumentView(DocumentViewSet):
+    document = ArticleDocument
+    serializer_class = ArticlesSerializer
+
+    filter_backends = [
+        FilteringFilterBackend,
+        CompoundSearchFilterBackend
+    ]
+
+    search_fields = ("id", "author_id", "author", "category",
+                  "title", "summary", "first_paragraph", "body")
+    multi_match_search_fields = ("id", "author_id", "author", "category",
+                  "title", "summary", "first_paragraph", "body")
+    filter_fields = {
+        "id": "id",
+        "author_id": "author_id", 
+        "author": "author",
+        "category": "category",
+        "title": "title",
+        "summary": "summary",
+        "first_paragraph": "first_paragraph",
+        "body": "body"
+    }
