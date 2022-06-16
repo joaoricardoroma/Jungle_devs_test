@@ -192,11 +192,11 @@ CELERY_BEAT_SCHEDULE = {
         "task": "web_scraping_json",
         'schedule': crontab(minute='*/1'),
     },
-    #
-    # "bsoup": {
-    #     "task": "web_scraping_bsoup",
-    #     'schedule': crontab(minute='*/1'),
-    # }
+
+    "bsoup": {
+        "task": "web_scraping_bsoup",
+        'schedule': crontab(minute='*/1'),
+    }
 }
 
 ELASTICSEARCH_DSL = {
